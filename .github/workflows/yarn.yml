@@ -23,6 +23,8 @@ jobs:
       env:
         NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN_NPM }}
     - name: Installation
+      run: export NODE_AUTH_TOKEN=${{ secrets.GITHUB_TOKEN_NPM }}
+    - name: Installation
       run: yarn install
       env:
         CI: true
