@@ -1,4 +1,4 @@
-name: AdonisJs Workflow
+name: Test Setup Node
 
 on: [push]
 
@@ -14,7 +14,7 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v1
+      uses: valmirphp/setup-node@master
       with:
         node-version: ${{ matrix.node-version }}
         registry-url: 'https://npm.pkg.github.com'
@@ -22,7 +22,7 @@ jobs:
         scope: '@sysgaming'
       env:
         NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN_NPM }}
-    - name: Installation
+    - name: Export Token
       run: export NODE_AUTH_TOKEN=${{ secrets.GITHUB_TOKEN_NPM }}
     - name: Installation
       run: yarn install
